@@ -1,0 +1,10 @@
+node_modules/
+out/
+.DS_Store
+*.log
+# Footage and everything derived from it stays local: the sample (npm run sample) and your own takes.
+public/sample/
+public/takes/
+# Compiled Swift tools
+tools/matte
+tools/face

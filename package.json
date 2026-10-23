@@ -1,0 +1,30 @@
+{
+	"name": "video-effects-skill",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"studio": "remotion studio",
+		"sample": "python3 scripts/make-sample.py public/sample && python3 scripts/make-fg.py public/sample/take.mp4 public/sample/masks public/sample/fg && python3 scripts/make-sticker-mattes.py public/sample/fg public/sample/sticker",
+		"typecheck": "tsc --noEmit",
+		"render:showcase": "remotion render FxShowcase out/showcase.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p",
+		"render:edit": "remotion render ExampleEdit out/edit.mp4 --codec=h264 --crf=17 --pixel-format=yuv420p --audio-codec=aac --audio-bitrate=320k",
+		"stills": "node scripts/fx-stills.mjs",
+		"bench": "node scripts/fx-bench.mjs"
+	},
+	"dependencies": {
+		"@remotion/bundler": "4.0.522",
+		"@remotion/cli": "4.0.522",
+		"@remotion/fonts": "4.0.522",
+		"@remotion/media": "4.0.522",
+		"@remotion/renderer": "4.0.522",
+		"react": "19.2.4",
+		"react-dom": "19.2.4",
+		"remotion": "4.0.522"
+	},
+	"devDependencies": {
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"typescript": "^5"
+	}
+}

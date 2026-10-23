@@ -1,0 +1,11 @@
+{
+	"source": { "video": "sample/take.mp4", "matte": "sample/fg", "sticker": "sample/sticker", "frames": 300, "face": { "x": 540, "y": 640, "mouthY": 900 }, "continuous": true },
+	"segments": [
+		{ "kind": "aroll", "at": 0, "frames": 30 },
+		{ "kind": "fx", "id": "snap-zoom", "at": 30, "frames": 60 },
+		{ "kind": "fx", "id": "checklist-pop", "at": 90, "frames": 72 },
+		{ "kind": "aroll", "at": 162, "frames": 18 },
+		{ "kind": "fx", "id": "orbit", "at": 180, "frames": 75 },
+		{ "kind": "fx", "id": "liquid-glass", "at": 255, "frames": 44 }
+	]
+}

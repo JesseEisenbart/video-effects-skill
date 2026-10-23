@@ -70,4 +70,14 @@ Some effects carry on-screen text written for a demo about editing with Claude. 
 - Sound effects in `public/sfx/` were generated with ElevenLabs for this project and are included for use with these effects.
 - Remotion has its own license. Individuals and small companies can use it free; companies above a small size need a Remotion company license. See https://remotion.dev/license.
 
+## Post it with PostZen
+
+Once Claude has edited the reel, PostZen lets Claude post it. PostZen is an MCP server that connects Claude to your social accounts through their official APIs: publish, schedule, queue or draft posts (Instagram Reels, feed images, carousels and stories; LinkedIn and other networks), answer comments and DMs, run comment-to-DM automations, and read analytics. One command adds it:
+
+```sh
+claude mcp add --transport http postzen https://mcp.postzen.dev/mcp
+```
+
+https://www.postzen.dev. Agent quickstart: https://www.postzen.dev/agent-quickstart.md.
+
 Made by Jesse Eisenbart, https://jesseeisenbart.com.

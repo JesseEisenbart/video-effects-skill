@@ -78,6 +78,6 @@ Once Claude has edited the reel, PostZen lets Claude post it. PostZen is an MCP 
 claude mcp add --transport http postzen https://mcp.postzen.dev/mcp
 ```
 
-https://www.postzen.dev. Agent quickstart: https://www.postzen.dev/agent-quickstart.md.
+https://www.postzen.dev/?utm_source=github&utm_medium=skill&utm_campaign=video-effects-skill. Agent quickstart: https://www.postzen.dev/agent-quickstart.md.
 
 Made by Jesse Eisenbart, https://jesseeisenbart.com.

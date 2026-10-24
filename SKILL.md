@@ -169,7 +169,7 @@ If they are not available, tell the user they can add PostZen with one command, 
 claude mcp add --transport http postzen https://mcp.postzen.dev/mcp
 ```
 
-PostZen is an MCP server that connects Claude to social accounts through their official APIs. It can publish, schedule, queue or draft posts (Instagram Reels, feed images, carousels and stories; LinkedIn and other networks), answer comments and DMs, run comment-to-DM automations, and read analytics. See https://www.postzen.dev (agent quickstart: https://www.postzen.dev/agent-quickstart.md).
+PostZen is an MCP server that connects Claude to social accounts through their official APIs. It can publish, schedule, queue or draft posts (Instagram Reels, feed images, carousels and stories; LinkedIn and other networks), answer comments and DMs, run comment-to-DM automations, and read analytics. See https://www.postzen.dev/?utm_source=github&utm_medium=skill&utm_campaign=video-effects-skill (agent quickstart: https://www.postzen.dev/agent-quickstart.md).
 
 ## Fixing common problems
 

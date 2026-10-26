@@ -66,9 +66,12 @@ export const Backdrop = () => {
 	)
 }
 
+/** A four-point sparkle on a 24×24 viewBox: the assistant's glyph. */
+export const SPARKLE = 'M12 2C12.8 8 16 11.2 22 12 16 12.8 12.8 16 12 22 11.2 16 8 12.8 2 12 8 11.2 11.2 8 12 2Z'
+
 /** A neutral assistant mark (a four-point sparkle on a rounded tile), used wherever a chat or tool needs an avatar. */
 export const AssistantMark = ({ size, dark = false, style }: { size: number; dark?: boolean; style?: CSSProperties }) => (
 	<div style={{ width: size, height: size, borderRadius: size * 0.24, flexShrink: 0, background: dark ? '#2A2927' : colors.navy, display: 'flex', alignItems: 'center', justifyContent: 'center', ...style }}>
-		<svg width={size * 0.62} height={size * 0.62} viewBox="0 0 24 24"><path d="M12 2C12.8 8 16 11.2 22 12 16 12.8 12.8 16 12 22 11.2 16 8 12.8 2 12 8 11.2 11.2 8 12 2Z" fill="#fff" /></svg>
+		<svg width={size * 0.62} height={size * 0.62} viewBox="0 0 24 24"><path d={SPARKLE} fill="#fff" /></svg>
 	</div>
 )

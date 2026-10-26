@@ -1,5 +1,6 @@
 Inter: Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
 Montserrat: Copyright 2011 The Montserrat Project Authors (https://github.com/JulietaUla/Montserrat)
+Caveat: Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

@@ -53,4 +53,5 @@ export const fonts = {
 	display: "'Montserrat', sans-serif",
 	ui: "'Inter', sans-serif",
 	mono: "ui-monospace, 'SF Mono', Menlo, Consolas, monospace",
+	hand: "'Caveat', cursive",
 }

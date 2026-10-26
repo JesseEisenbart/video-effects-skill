@@ -20,7 +20,7 @@ const MUTED = colors.navy500
 const STEPS = [
 	{ label: 'Cut the pauses', at: 46 },
 	{ label: 'Caption every word', at: 56 },
-	{ label: 'Add 18 effects', at: 66 },
+	{ label: 'Add 21 effects', at: 66 },
 ]
 const TICK_DELAY = 8
 

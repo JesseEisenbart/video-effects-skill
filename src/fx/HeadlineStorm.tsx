@@ -14,7 +14,7 @@ import { colors } from './theme'
 type Banner = { at: number, tag: string, text: string, y: number, x: number, rot: number, from: -1 | 1, size: number, dark?: boolean, back?: boolean }
 const BANNERS: Banner[] = [
 	{ at: 2, tag: 'BREAKING', text: 'CLAUDE CUT THIS REEL', y: 300, x: 20, rot: -4, from: -1, size: 62 },
-	{ at: 8, tag: 'JUST IN', text: '18 EFFECTS. ZERO KEYFRAMES.', y: 450, x: 230, rot: 3, from: 1, size: 44, back: true },
+	{ at: 8, tag: 'JUST IN', text: '21 EFFECTS. ZERO KEYFRAMES.', y: 450, x: 230, rot: 3, from: 1, size: 44, back: true },
 	{ at: 14, tag: 'LIVE', text: 'THE TIMELINE IS A PROMPT NOW', y: 640, x: 20, rot: -3, from: -1, size: 42, dark: true, back: true },
 	{ at: 21, tag: 'NEW', text: 'EDITED IN REACT', y: 1170, x: 20, rot: -3, from: -1, size: 56 },
 	{ at: 28, tag: 'BREAKING', text: 'SHIPPED BEFORE LUNCH', y: 1320, x: 130, rot: 4, from: 1, size: 52, dark: true },

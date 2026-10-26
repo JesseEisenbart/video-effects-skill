@@ -3,7 +3,7 @@ import { Easing, interpolate, useCurrentFrame } from 'remotion'
 import { type FxEntry, type FxProps, fonts, progress } from './shared'
 import { Backdrop, GlassBlur, GlassCard, materialize, pop, colors, themeFonts } from './theme'
 
-// 18 Checklist Tally: a closing card on the light grey Backdrop. A big "N / 18 effects" counter climbs while a glass card
+// 18 Checklist Tally: a closing card on the light grey Backdrop. A big "N / 21 effects" counter climbs while a glass card
 // listing every effect ticks them off in order (mint ticks), speeding up as it goes. On the last one the progress bar
 // completes and the count turns blue. Holds for the outro. Plays no footage, so it needs neither cut-out nor face.
 // EFFECT_NAMES and the line under the counter are on-screen copy; change them to fit the video.
@@ -13,6 +13,7 @@ import { Backdrop, GlassBlur, GlassCard, materialize, pop, colors, themeFonts } 
 export const EFFECT_NAMES = [
 	'Orbit', 'Chat Takeover', 'Frame Escape', 'Snap Zoom', 'Checklist Pop', 'Headline Storm', 'Zoom Portal', 'Growth Curve', 'B-roll Overlay',
 	'Paper Cutout', 'Magazine Cover', 'Liquid Glass', 'Zoom Through Cut', 'Green Screen', 'Frame Break', 'Digital Zoom', 'Phone Mockup', 'Checklist Tally',
+	'Glass Widgets', 'Checklist', 'Split',
 ]
 const FIRST = 14
 const LAST = 80

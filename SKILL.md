@@ -5,7 +5,7 @@ description: Adds motion-graphics effects to a vertical talking-head video with 
 
 # Video effects
 
-This repo is a Remotion project with 18 effects for vertical (1080x1920, 30 fps) talking-head footage. Each effect is a React component that plays the user's take with something on top: a zoom, a cut-out of the speaker with graphics behind them, a chat window, a magazine cover, and so on. You prepare the take once, write a cut list in `src/edit/edit.json`, check stills, and render.
+This repo is a Remotion project with 21 effects for vertical (1080x1920, 30 fps) talking-head footage. Each effect is a React component that plays the user's take with something on top: a zoom, a cut-out of the speaker with graphics behind them, a chat window, a magazine cover, and so on. You prepare the take once, write a cut list in `src/edit/edit.json`, check stills, and render.
 
 Frames are the unit everywhere. Frame = seconds x 30.
 
@@ -23,7 +23,7 @@ Check `uname`. The two Vision steps (`tools/matte`, `tools/face`) only run on ma
 - Then continue the pipeline from `scripts/make-fg.py` (section 2, step 3 onward).
 - Set `face` by hand: render one still of the take (`ffmpeg -ss 2 -i take.mp4 -frames:v 1 still.png`), look at it, and write `{ "x": <face centre>, "y": <top of the face>, "mouthY": <mouth line> }` in 1080x1920 pixels.
 
-To see the effects without any footage, `npm run sample` builds a synthetic take in `public/sample/`, then `npm run studio` opens Remotion Studio with the `FxShowcase` composition (all 18 back to back).
+To see the effects without any footage, `npm run sample` builds a synthetic take in `public/sample/`, then `npm run studio` opens Remotion Studio with the `FxShowcase` composition (all 21 back to back).
 
 ## 2. Prepare the take
 
@@ -80,11 +80,14 @@ Match the effect to what is being said at that moment. A list builds while the s
 | 15 | `frame-break` | Frame Break | 66 | The grey scene cracks and shatters, shards fall away, the real room is underneath | "break through", "that's a myth", a reveal | yes |
 | 16 | `digital-zoom` | Digital Zoom | 66 | Viewfinder overlay; the shot steps 1x to 1.8x to 3x on the face, then snaps back | "zoom in on this", scrutiny | no |
 | 17 | `phone-mockup` | Phone Mockup | 72 | Take shrinks into a phone screen with a short-video UI; the phone settles into a tilt | "on your feed", "when you post this" | no |
-| 18 | `checklist-tally` | Checklist Tally | 120 | Closing card: a counter climbs while a list of 18 items ticks off. Plays no footage | the outro, a summary | no |
+| 18 | `checklist-tally` | Checklist Tally | 120 | Closing card: a counter climbs while a list of 21 items ticks off. Plays no footage | the outro, a summary | no |
+| 19 | `glass-widgets` | Glass Widgets | 90 | Five frosted widgets rise around the head, the chart and ring behind the cut-out; counts run up, bars grow, the ring fills to 100%, a render bar completes and turns green | "everything's running", stats, a progress update | yes |
+| 20 | `checklist` | Checklist | 90 | A dark card rises over the chest; five rows go pending, working, done, with an "N of 5" counter and a sparkle that settles on the last tick | listing five steps, "here's what it did", a process | no |
+| 21 | `split` | Split | 90 | The frame splits; a paper chart panel slides into the top half and the shot drops below it, then bars grow with their values and a dashed average line draws across | comparing numbers, "on average", "versus" | no |
 
 Frames is the effect's full duration (the `duration` in its `FxEntry`). "Cut-out" means the effect draws the speaker separated from the room, so the matte quality matters; the others only play the take.
 
-Effects that use the face position: Orbit, Frame Escape, Snap Zoom, Zoom Portal, Paper Cutout, Liquid Glass, Zoom Through Cut, Digital Zoom.
+Effects that use the face position: Orbit, Frame Escape, Snap Zoom, Zoom Portal, Paper Cutout, Liquid Glass, Zoom Through Cut, Digital Zoom, Split (only `face.y`, to drop the shot clear of the seam).
 
 ### On-screen copy
 
@@ -98,8 +101,11 @@ These effects carry text written for a "made with Claude" demo. Edit the strings
 - `src/fx/ChecklistPop.tsx`: `ITEMS` (four short words).
 - `src/fx/ChecklistTally.tsx`: `EFFECT_NAMES` and the line under the counter.
 - `src/fx/GrowthCurve.tsx`: axis caption, counter unit, the pill text.
+- `src/fx/GlassWidgets.tsx`: `COPY` (count, profile, chart, ring, render).
+- `src/fx/Checklist.tsx`: `TITLE` and `ROWS` (a label plus a short mono tag per row).
+- `src/fx/Split.tsx`: `TITLE`, `ACCENT` (a handwritten line in Caveat), `BARS` (label plus value), `VALUE_SUFFIX`, `AVG_LABEL`.
 
-Only change string literals. Keep the counts the same (four `ITEMS`, seven `BANNERS`) unless you also check the layout in a still.
+Only change string literals. Keep the counts the same (four `ITEMS`, seven `BANNERS`, five `ROWS`, five `BARS`) unless you also check the layout in a still.
 
 ## 5. Write the edit
 
@@ -173,8 +179,9 @@ PostZen is an MCP server that connects Claude to social accounts through their o
 
 ## Fixing common problems
 
-- Orbit, Snap Zoom, Digital Zoom, Liquid Glass or Zoom Portal miss the face: fix `face` in the source. `x` is the horizontal centre of the face, `y` the top of the face (hairline), `mouthY` the lips, all in 1080x1920 pixels. Check with one still of the take.
+- Orbit, Snap Zoom, Digital Zoom, Liquid Glass or Zoom Portal miss the face: fix `face` in the source. `x` is the horizontal centre of the face, `y` the top of the face (hairline), `mouthY` the lips, all in 1080x1920 pixels. Check with one still of the take. Split's seam cuts through the hair: same fix; `face.y` sets how far the shot drops.
 - Cut-out flickers or has holes: the masks are poor. Try better lighting or a cleaner background, or re-run segmentation with a different tool and continue from `make-fg.py`.
 - Checklist Pop covers the speaker: the stack is placed for a speaker centred or left of centre. Change `LEFT` in `ChecklistPop.tsx` for a speaker on the right. Zoom Portal's floating ring (`C0` in `ZoomPortal.tsx`) sits upper left for the same reason.
+- Glass Widgets covers the face: the widgets are placed for a speaker centred in frame and do not follow `face`. Move them with each `Widget`'s `x` and `y` in `GlassWidgets.tsx`.
 - Render is slow: stills are cheap, full renders are not. Agree on the cut list from stills before rendering, and render once.
-- Fonts look wrong: `public/fonts/` holds Inter and Montserrat; nothing else is loaded.
+- Fonts look wrong: `public/fonts/` holds Inter, Montserrat and Caveat (Split's handwritten line); nothing else is loaded.

@@ -7,7 +7,8 @@ import { renderMedia, selectComposition } from '@remotion/renderer'
 
 // Same order as FX_ALL in src/fx/index.tsx.
 const EFFECT_IDS = ['orbit', 'chat-takeover', 'frame-escape', 'snap-zoom', 'checklist-pop', 'headline-storm', 'zoom-portal', 'growth-curve', 'broll-overlay',
-	'paper-cutout', 'magazine-cover', 'liquid-glass', 'zoom-through-cut', 'green-screen', 'frame-break', 'digital-zoom', 'phone-mockup', 'checklist-tally']
+	'paper-cutout', 'magazine-cover', 'liquid-glass', 'zoom-through-cut', 'green-screen', 'frame-break', 'digital-zoom', 'phone-mockup', 'checklist-tally',
+	'glass-widgets', 'checklist', 'split']
 const [outDir = 'out/bench', conc = '8'] = process.argv.slice(2)
 fs.mkdirSync(outDir, { recursive: true })
 const serveUrl = await bundle({ entryPoint: path.resolve('src/index.ts'), symlinkPublicDir: true })

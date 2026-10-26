@@ -1,6 +1,6 @@
 # video-effects
 
-18 motion-graphics effects for vertical (1080x1920, 30 fps) talking-head footage, built as a Remotion project, plus a Claude skill that knows how to prepare a take, pick effects to match what is said, write the cut list and render it.
+21 motion-graphics effects for vertical (1080x1920, 30 fps) talking-head footage, built as a Remotion project, plus a Claude skill that knows how to prepare a take, pick effects to match what is said, write the cut list and render it.
 
 The look is light "glass" cards on a grey backdrop with critically damped springs. Several effects cut the speaker out of the room and put graphics behind them; the repo includes the pipeline that makes those cut-outs from a plain take.
 
@@ -15,7 +15,7 @@ npm install
 pip install -r requirements.txt   # numpy, pillow
 npm run sample                    # synthetic take + masks + cut-outs in public/sample/ (needs ffmpeg)
 npm run studio                    # Remotion Studio: FxShowcase, FxPreview, ExampleEdit
-npm run render:showcase           # out/showcase.mp4, all 18 effects back to back
+npm run render:showcase           # out/showcase.mp4, all 21 effects back to back
 ```
 
 Other scripts: `npm run render:edit` renders `src/edit/edit.json` to `out/edit.mp4`; `npm run stills -- <outDir> <effectId> [from] [frame,frame]` renders stills of one effect; `npm run bench` times every effect; `npm run typecheck`.
@@ -36,7 +36,7 @@ The matte and face steps use Apple's Vision framework, so they are macOS only (t
 
 `src/edit/edit.json` is a cut list over one take: a `source` (video, cut-out folder, sticker folder, frame count, face position) and `segments` that play back to back. Each segment is plain footage (`aroll`) or an effect (`fx` with an `id`), starts at a source frame `at` and runs for `frames`. The voice comes from the take's own audio per segment, so with a continuous take each segment starts where the previous one ended. Effects bring their own sound cues; an optional `music` bed sits under everything.
 
-## The 18 effects
+## The 21 effects
 
 | | id | What it does |
 |--|----|--------------|
@@ -57,7 +57,10 @@ The matte and face steps use Apple's Vision framework, so they are macOS only (t
 | 15 | `frame-break` | The grey scene cracks and shatters to reveal the room |
 | 16 | `digital-zoom` | A viewfinder overlay; the shot steps in on the face and snaps back |
 | 17 | `phone-mockup` | The take shrinks into a phone screen with a short-video UI |
-| 18 | `checklist-tally` | Closing card: a counter and a list of 18 items ticking off |
+| 18 | `checklist-tally` | Closing card: a counter and a list of 21 items ticking off |
+| 19 | `glass-widgets` | Five frosted widgets rise around the speaker, behind and in front; counts run up, a ring fills, a render bar completes |
+| 20 | `checklist` | A dark card rises over the chest and ticks off five steps: pending, working, done |
+| 21 | `split` | A paper chart slides into the top half and pushes the shot down; bars grow, then an average line draws across |
 
 Each lives in `src/fx/<Name>.tsx` with a header comment describing its motion and sound cues. The shared contract (`FxSource`, `ARoll`, `Cutout`, `useFace`, springs) is in `src/fx/shared.tsx`; the theme (colours, `GlassCard`, `Backdrop`) in `src/fx/theme.tsx`; the sound library in `src/fx/sfx.tsx`.
 
@@ -66,7 +69,7 @@ Some effects carry on-screen text written for a demo about editing with Claude. 
 ## Licenses
 
 - Code: see `LICENSE`.
-- Fonts: Inter and Montserrat in `public/fonts/` are under the SIL Open Font License 1.1 (`public/fonts/OFL.txt`).
+- Fonts: Inter, Montserrat and Caveat in `public/fonts/` are under the SIL Open Font License 1.1 (`public/fonts/OFL.txt`).
 - Sound effects in `public/sfx/` were generated with ElevenLabs for this project and are included for use with these effects.
 - Remotion has its own license. Individuals and small companies can use it free; companies above a small size need a Remotion company license. See https://remotion.dev/license.
 
